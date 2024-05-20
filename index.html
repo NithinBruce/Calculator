@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <title>Calculator</title>
+    <style>
+        #demo{
+            background-image: url(https://c0.wallpaperflare.com/preview/526/959/766/calculator-pencil-pen-paper.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .calculator-form {
+            max-width: 400px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .calculator-form input,
+        .calculator-form select,
+        .calculator-form button {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="demo">
+    <h1>CALCULATOR</h1><br>
+    <div class="calculator-form">
+        <label for="num1"><b>Enter the first number:</b></label>
+        <input type="text" id="num1" class="form-control"><br>
+        <label for="num2"><b>Enter the second number:</b></label>
+        <input type="text" id="num2" class="form-control"><br>
+        <label for="operator"><b>Select the operator</b></label>
+        <select id="operator" class="form-control">
+            <option value="+">Addition(+)</option>
+            <option value="-">Subtraction(-)</option>
+            <option value="*">Multiplication(*)</option>
+            <option value="/">Division(/)</option>
+        </select><br>
+        <button onclick="myFunction()" class="btn btn-primary btn-block">Equal to</button><br>
+        <label for="result"><b>Result:</b></label>
+        <input type="text" id="result" class="form-control" readonly>
+    </div>
+</div>
+
+<script>
+    function myFunction(){
+        var num1 = parseFloat(document.getElementById("num1").value);
+        var num2 = parseFloat(document.getElementById("num2").value);
+        var operator = document.getElementById("operator").value;
+        var result;
+
+        function Add(num1, num2) {
+            return num1 + num2;
+        }
+
+        function sub(num1, num2) {
+            return num1 - num2;
+        }
+
+        function mul(num1, num2) {
+            return num1 * num2;
+        }
+
+        function div(num1, num2) {
+            if (num2 != 0) {
+                return num1 / num2;
+            } else {
+                window.alert("Not possible");
+            }
+        }
+
+        switch(operator) {
+            case '+':
+                result = Add(num1, num2);
+                print();
+                break;
+            case '-':
+                result = sub(num1, num2);
+                print();
+                break;
+            case '*':
+                result = mul(num1, num2);
+                print();
+                break;
+            case '/':
+                result = div(num1, num2);
+                print();
+                break;
+        }
+
+        function print() {
+            document.getElementById("result").value = result;
+        }
+    }
+</script>
+
+</body>
+</html>
